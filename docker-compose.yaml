@@ -2,15 +2,11 @@ version: '2'
 
 services:
     api1:
-        image: tiangolo/uvicorn-gunicorn-fastapi
+        image: api1
         ports:
             - "8001:80"
-        volumes:
-            - ./api1:/app
     api2:
-        image: tiangolo/uvicorn-gunicorn-fastapi
+        image: api2
         ports:
             - "8002:80"
-        volumes:
-            - ./api2:/app
 
