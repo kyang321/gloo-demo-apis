@@ -1,0 +1,38 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: api1
+  name: api1
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: api1
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: api1
+    spec:
+      containers:
+      - image: kyang321/test-images:1
+        name: api1
+        ports:
+        - containerPort: 80
+          name: http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: api1
+  namespace: default
+  labels:
+    service: api1
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+  selector:
+    app: api1
+
